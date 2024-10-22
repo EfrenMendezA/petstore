@@ -14,17 +14,19 @@
       </b-col>
     </b-row>
 
+    <b-row></b-row>
+    <div>
+      <h4>-------CONTADOR-------</h4>
+      <b-row></b-row>
+      <daic-contador></daic-contador>
+    </div>
 
-
-    <b-row>
-      <h1> HOLA MUNDO </h1>
-      <br>
-      <daic-label :title="holllaa"></daic-label>
-    </b-row>
-
-
-
-
+    <b-row></b-row>
+    <div>
+      <h4>-------MODAL-------</h4>
+      <b-row></b-row>
+      <daic-calculadora>ABRIR CALCULADORA</daic-calculadora>
+    </div>
 
     <b-row>
       <b-table class="text-center" :items="listaTareas" :fields="fields" head-variant="dark" show-empty>

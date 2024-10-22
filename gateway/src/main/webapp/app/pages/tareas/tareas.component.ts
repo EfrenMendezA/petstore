@@ -31,6 +31,8 @@ export default defineComponent({
     };
   },
   methods: {
+    openCalculadoraModalHandler(): void {
+    },
     openCreateModalHandler(): void {
       this.tareaToEdit = new Tarea();
       this.createTareaModal.show();
