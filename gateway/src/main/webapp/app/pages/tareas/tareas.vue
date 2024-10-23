@@ -23,9 +23,11 @@
 
     <b-row></b-row>
     <div>
-      <h4>-------MODAL-------</h4>
-      <b-row></b-row>
-      <daic-calculadora>ABRIR CALCULADORA</daic-calculadora>
+      <daic-efren></daic-efren>
+    </div>
+    <b-row></b-row>
+    <div>
+      <daic-calculadora></daic-calculadora>
     </div>
 
     <b-row>

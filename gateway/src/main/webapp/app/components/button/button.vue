@@ -1,9 +1,9 @@
 <template>
   <div>
     <b-button :variant="variant" @click="clickHandler">
-      <b-icon  v-if="icon" :icon="icon"></b-icon>
+      <b-icon v-if="icon" :icon="icon"></b-icon>
       {{ name }}
-      </b-button>
+    </b-button>
   </div>
 </template>
 

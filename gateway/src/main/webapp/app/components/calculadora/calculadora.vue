@@ -1,63 +1,77 @@
 <template>
   <div>
-    <b-button variant="primary" @click="showModal = true">CALCULADORA</b-button>
-    <b-modal v-model="showModal" title="Calculadora">
-      <div>
-        <!-- Aquí puedes añadir tu calculadora o contenido -->
-        <h2>Contenido de la Calculadora</h2>
-        <p>¡Aquí puedes agregar tu lógica de calculadora!</p>
+    <b-button @click="showModal = true">Calculadora</b-button>
+
+    <b-modal v-model="showModal" title="Calculadora" hide-footer>
+      <div class="calculator">
+        <input type="text" v-model="input" disabled />
+        <div class="buttons">
+          <button @click="addToInput('1')">1</button>
+          <button @click="addToInput('2')">2</button>
+          <button @click="addToInput('3')">3</button>
+          <button @click="addToInput('+')">+</button>
+          <button @click="addToInput('4')">4</button>
+          <button @click="addToInput('5')">5</button>
+          <button @click="addToInput('6')">6</button>
+          <button @click="addToInput('-')">-</button>
+          <button @click="addToInput('7')">7</button>
+          <button @click="addToInput('8')">8</button>
+          <button @click="addToInput('9')">9</button>
+          <button @click="addToInput('*')">*</button>
+          <button @click="clearInput">C</button>
+          <button @click="calculateResult">=</button>
+          <button @click="addToInput('0')">0</button>
+          <button @click="addToInput('/')">/</button>
+        </div>
       </div>
     </b-modal>
   </div>
 </template>
 
-<!--<strip lang="ts" src="./calculadora.component.ts"></strip> -->
-<script>
-export default {
-  data() {
-    return {
-      showModal: false,
-    };
-  },
-};
-</script>
+<script lang="ts" src="./calculadora.component.ts"></script>
 
-<style>
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+
+<style scoped>
+.calculator {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  z-index: 1000;
+  padding: 10px;
 }
 
-.modal-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
+input {
   width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.modal-content {
-  background: white;
-  padding: 20px;
+  padding: 10px;
+  font-size: 24px;
+  text-align: right;
+  margin-bottom: 10px;
+  border: 2px solid #007bff;
   border-radius: 5px;
-  position: relative;
-  z-index: 1001;
+  background-color: #f9f9f9;
 }
 
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: transparent;
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  padding: 20px;
+  font-size: 18px;
   border: none;
-  font-size: 1.5em;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:active {
+  background-color: #003f7f;
 }
 </style>
