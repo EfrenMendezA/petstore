@@ -102,20 +102,55 @@ export default defineComponent({
         });
       this.createTareaModal.hide();
     },
+
     deleteTareaHandler(): void {
-      if (this.listaTareas) {
-        const index = this.listaTareas.findIndex(tarea => tarea.id === this.tareaToEdit.id);
-        this.listaTareas.splice(index, 1);
-        this.deleteTareaModal.hide();
-      }
+      // if (this.listaTareas) {
+      //   const index = this.listaTareas.findIndex(tarea => tarea.id === this.tareaToEdit.id);
+      //   this.listaTareas.splice(index, 1);
+      //   this.deleteTareaModal.hide();
+      // }
+      this.isFetching = true;
+      console.log(` --this.tareaToEdit----> ${this.tareaToEdit} ---- `); //Intentando convertir un objeto a una cadena de texto porque java scrip llama al método toString del objeto que devuelve [object Object]
+      console.log(` --this.tareaToEdit.nombre----> ${this.tareaToEdit.nombre} ---- `);
+      console.log(` --this.tareaToEdit.id----> ${this.tareaToEdit.id} ---- `);
+      console.log(` --JSON.stringify(this.tareaToEdit----> ${JSON.stringify(this.tareaToEdit)} ---- `);
+      console.log(` --this.tareaToEdit.id----> ${this.tareaToEdit.id} ---- `);
+      this.tareaService()
+        // .eliminar(this.tareaToEdit.id)
+        .eliminar(this.tareaToEdit)
+        .then(tareas => {
+          this.listarTareas();
+        })
+        .catch(err => {
+          console.log(err);
+        })
+        .finally(() => {
+          this.isFetching = false;
+        });
+      this.deleteTareaModal.hide();
     },
+
     updateTareaHandler(): void {
-      if (this.listaTareas) {
-        const index = this.listaTareas.findIndex(tarea => tarea.id === this.tareaToEdit.id);
-        this.listaTareas.splice(index, 1, this.tareaToEdit);
-        this.editTareaModal.hide();
-      }
+      // if (this.listaTareas) {
+      //   const index = this.listaTareas.findIndex(tarea => tarea.id === this.tareaToEdit.id);
+      //   this.listaTareas.splice(index, 1, this.tareaToEdit);
+      //   this.editTareaModal.hide();
+      // }
+      this.isFetching = true;
+      this.tareaService()
+        .actualizar(this.tareaToEdit)
+        .then(tareas => {
+          this.listarTareas();
+        })
+        .catch(err => {
+          console.log(err);
+        })
+        .finally(() => {
+          this.isFetching = false;
+        });
+      this.editTareaModal.hide();
     },
+
     cancelHandler(): void {
       this.createTareaModal.hide();
       this.deleteTareaModal.hide();
