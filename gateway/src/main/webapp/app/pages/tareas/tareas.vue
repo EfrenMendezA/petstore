@@ -30,56 +30,56 @@
         </template>
       </b-table>
     </b-row>
+
+    <!-- Crear una nueva tarea-->
+    <b-modal
+      ref="createTareaModal"
+      id="createTareaModal"
+      :title="$t('task.messages.new')"
+      header-bg-variant="primary"
+      header-text-variant="white"
+      hide-footer
+    >
+      <b-card class="border-0">
+        <tarea-edit v-model="tareaToEdit" @cancel="cancelHandler()" @coqnfirmed="createTareaHandler()"></tarea-edit>
+      </b-card>
+
+      <template #modal-footer> </template>
+    </b-modal>
+
+    <!-- Editar una tarea-->
+    <b-modal
+      ref="editTareaModal"
+      id="editTareaModal"
+      :title="$t('task.messages.edit')"
+      header-bg-variant="primary"
+      header-text-variant="white"
+      hide-footer
+    >
+      <b-card>
+        <tarea-edit v-model="tareaToEdit" @cancel="cancelHandler" @confirmed="updateTareaHandler"></tarea-edit>
+      </b-card>
+    </b-modal>
+
+    <!-- Eliminar una tarea-->
+    <b-modal
+      ref="deleteTareaModal"
+      id="deleteTareaModal"
+      :title="$t('task.messages.delete')"
+      header-bg-variant="primary"
+      header-text-variant="white"
+    >
+      <h3 class="my-4 text-center">{{ $t('task.messages.confirmacion') }}</h3>
+
+      <b-card>
+        <tarea-edit v-model="tareaToEdit" readonly></tarea-edit>
+      </b-card>
+      <template #modal-footer>
+        <b-button variant="outline-danger" @click="cancelHandler()">{{ $t('entity.action.cancel') }}</b-button>
+        <b-button variant="primary" @click="deleteTareaHandler()">{{ $t('entity.action.confirm') }}</b-button>
+      </template>
+    </b-modal>
   </div>
-
-  <!-- Crear una nueva tarea-->
-  <b-modal
-    ref="createTareaModal"
-    id="createTareaModal"
-    :title="$t('task.messages.new')"
-    header-bg-variant="primary"
-    header-text-variant="white"
-    hide-footer
-  >
-    <b-card class="border-0">
-      <tarea-edit v-model="tareaToEdit" @cancel="cancelHandler()" @confirmed="createTareaHandler()"></tarea-edit>
-    </b-card>
-
-    <template #modal-footer> </template>
-  </b-modal>
-
-  <!-- Editar una tarea-->
-  <b-modal
-    ref="editTareaModal"
-    id="editTareaModal"
-    :title="$t('task.messages.edit')"
-    header-bg-variant="primary"
-    header-text-variant="white"
-    hide-footer
-  >
-    <b-card>
-      <tarea-edit v-model="tareaToEdit" @cancel="cancelHandler" @confirmed="updateTareaHandler"></tarea-edit>
-    </b-card>
-  </b-modal>
-
-  <!-- Eliminar una tarea-->
-  <b-modal
-    ref="deleteTareaModal"
-    id="deleteTareaModal"
-    :title="$t('task.messages.delete')"
-    header-bg-variant="primary"
-    header-text-variant="white"
-  >
-    <h3 class="my-4 text-center">{{ $t('task.messages.confirmacion') }}</h3>
-
-    <b-card>
-      <tarea-edit v-model="tareaToEdit" readonly></tarea-edit>
-    </b-card>
-    <template #modal-footer>
-      <b-button variant="outline-danger" @click="cancelHandler()">{{ $t('entity.action.cancel') }}</b-button>
-      <b-button variant="primary" @click="deleteTareaHandler()">{{ $t('entity.action.confirm') }}</b-button>
-    </template>
-  </b-modal>
 </template>
 
 <script lang="ts" src="./tareas.component.ts"></script>

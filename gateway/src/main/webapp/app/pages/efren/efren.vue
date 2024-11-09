@@ -30,16 +30,20 @@
         </b-card>
       </div>
       <div class="col-md-4">
-        <b-card border-variant="success" header="Success" align="center">
-          <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+        <b-card border-variant="info" header="Subir imágen" header-bg-variant="info" header-text-variant="white" align="center">
+          <!-- <daic-profileImageUpload></daic-profileImageUpload> -->
+          <daic-imagenDePerfil></daic-imagenDePerfil>
+          <daic-imagen></daic-imagen>
+          <daic-imagenOptionApi></daic-imagenOptionApi>
         </b-card>
       </div>
     </div>
     <br />
     <div class="row">
       <div class="col-md-4">
-        <b-card border-variant="info" header="Info" align="center">
+        <b-card border-variant="info" header="=== MODAL ====" align="center" header-bg-variant="info">
           <b-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</b-card-text>
+          <daic-modal></daic-modal>
         </b-card>
       </div>
       <div class="col-md-4">
